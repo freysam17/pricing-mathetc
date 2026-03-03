@@ -4,21 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math ETC | Year-Round Learning Programs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-orange: #FF6B2C;
+            --primary-orange: #FF6B35;
             --orange-light: #FF8F5C;
-            --orange-dark: #E55A1B;
-            --black: #0A0A0A;
-            --dark-gray: #1A1A1A;
-            --medium-gray: #2D2D2D;
-            --light-gray: #F5F5F5;
+            --orange-soft: #FFF4F0;
+            --orange-glow: rgba(255, 107, 53, 0.15);
+            
             --white: #FFFFFF;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-shadow: rgba(0, 0, 0, 0.3);
+            --off-white: #FAFBFC;
+            --light-gray: #F5F7FA;
+            --medium-gray: #E8ECF1;
+            --text-primary: #1A1D26;
+            --text-secondary: #5A6275;
+            --text-muted: #8B93A7;
+            
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-bg-solid: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.9);
+            --glass-shadow: rgba(0, 0, 0, 0.04);
+            --glass-shadow-hover: rgba(255, 107, 53, 0.12);
+            
+            --radius-sm: 12px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
         }
 
         * {
@@ -32,15 +44,15 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--black);
-            color: var(--white);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--off-white);
+            color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Animated Background */
-        .bg-animation {
+        /* Bright Animated Background */
+        .bg-decoration {
             position: fixed;
             top: 0;
             left: 0;
@@ -48,106 +60,83 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
+            background: linear-gradient(135deg, var(--off-white) 0%, var(--light-gray) 50%, var(--off-white) 100%);
         }
 
-        .bg-animation::before {
-            content: '';
+        .bg-shape {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(255, 107, 44, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 80% 80%, rgba(255, 107, 44, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(255, 107, 44, 0.03) 0%, transparent 60%);
-            animation: bgPulse 20s ease-in-out infinite;
-        }
-
-        @keyframes bgPulse {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(-2%, -2%) rotate(1deg); }
-            50% { transform: translate(2%, 2%) rotate(-1deg); }
-            75% { transform: translate(-1%, 1%) rotate(0.5deg); }
-        }
-
-        .floating-orb {
-            position: fixed;
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.4;
-            pointer-events: none;
-            z-index: -1;
+            opacity: 0.6;
+            animation: float 20s ease-in-out infinite;
         }
 
-        .orb-1 {
+        .bg-shape-1 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.12), rgba(255, 143, 92, 0.08));
+            top: -10%;
+            right: -10%;
+            animation-delay: 0s;
+        }
+
+        .bg-shape-2 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(255, 200, 150, 0.1));
+            bottom: 10%;
+            left: -10%;
+            animation-delay: -5s;
+        }
+
+        .bg-shape-3 {
             width: 400px;
             height: 400px;
-            background: var(--primary-orange);
-            top: 10%;
-            right: -10%;
-            animation: float1 15s ease-in-out infinite;
+            background: linear-gradient(135deg, rgba(255, 143, 92, 0.1), rgba(255, 107, 53, 0.06));
+            top: 40%;
+            left: 30%;
+            animation-delay: -10s;
         }
 
-        .orb-2 {
+        .bg-shape-4 {
             width: 300px;
             height: 300px;
-            background: var(--orange-dark);
-            bottom: 20%;
-            left: -5%;
-            animation: float2 18s ease-in-out infinite;
+            background: linear-gradient(135deg, rgba(255, 220, 200, 0.3), rgba(255, 107, 53, 0.05));
+            top: 20%;
+            right: 20%;
+            animation-delay: -15s;
         }
 
-        .orb-3 {
-            width: 200px;
-            height: 200px;
-            background: var(--orange-light);
-            top: 50%;
-            left: 50%;
-            animation: float3 12s ease-in-out infinite;
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 10px) scale(1.02); }
         }
 
-        @keyframes float1 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-50px, 50px); }
-        }
-
-        @keyframes float2 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, -30px); }
-        }
-
-        @keyframes float3 {
-            0%, 100% { transform: translate(-50%, -50%); }
-            50% { transform: translate(-30%, -70%); }
-        }
-
-        /* Glass Morphism Components */
+        /* Glass Components */
         .glass {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
             box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .glass-dark {
-            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(26, 26, 26, 0.6) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
+                0 4px 24px var(--glass-shadow),
+                0 1px 2px rgba(0, 0, 0, 0.02),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
 
         .glass-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            background: var(--glass-bg-solid);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.95);
+            border-radius: var(--radius-lg);
+            box-shadow: 
+                0 4px 32px rgba(0, 0, 0, 0.03),
+                0 1px 3px rgba(0, 0, 0, 0.02),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
@@ -160,15 +149,80 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
         }
 
         .glass-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(255, 107, 44, 0.3);
+            transform: translateY(-6px);
             box-shadow: 
-                0 20px 60px rgba(255, 107, 44, 0.15),
-                0 8px 32px rgba(0, 0, 0, 0.3);
+                0 20px 60px var(--glass-shadow-hover),
+                0 8px 24px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+            border-color: rgba(255, 107, 53, 0.2);
+        }
+
+        /* Glass Buttons */
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.25);
+            border-radius: var(--radius-md);
+            padding: 1rem 2rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--primary-orange);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 
+                0 2px 12px rgba(255, 107, 53, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 107, 53, 0.1);
+            border-color: rgba(255, 107, 53, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 8px 24px rgba(255, 107, 53, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-glass-primary {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(255, 143, 92, 0.1));
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            color: var(--primary-orange);
+        }
+
+        .btn-glass-primary:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.25), rgba(255, 143, 92, 0.15));
+            border-color: rgba(255, 107, 53, 0.5);
+        }
+
+        .btn-solid {
+            background: linear-gradient(135deg, var(--primary-orange), var(--orange-light));
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            padding: 1rem 2rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-solid:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4);
         }
 
         /* Navigation */
@@ -183,14 +237,15 @@
         }
 
         .navbar.scrolled {
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
         }
 
         .nav-container {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -207,20 +262,21 @@
         .logo-icon {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, var(--primary-orange), var(--orange-dark));
-            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--orange-light));
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--white);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
         }
 
         .logo-text {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--white);
+            color: var(--text-primary);
         }
 
         .logo-text span {
@@ -229,14 +285,14 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
@@ -251,11 +307,12 @@
             width: 0;
             height: 2px;
             background: var(--primary-orange);
+            border-radius: 2px;
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--white);
+            color: var(--primary-orange);
         }
 
         .nav-links a:hover::after {
@@ -263,28 +320,29 @@
         }
 
         .nav-cta {
-            background: linear-gradient(135deg, var(--primary-orange), var(--orange-dark));
-            color: var(--white);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.12), rgba(255, 143, 92, 0.08));
+            backdrop-filter: blur(10px);
+            color: var(--primary-orange);
             padding: 0.75rem 1.5rem;
-            border-radius: 12px;
+            border-radius: var(--radius-sm);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+            border: 1px solid rgba(255, 107, 53, 0.2);
         }
 
         .nav-cta:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 143, 92, 0.12));
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 107, 44, 0.4);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.2);
         }
 
         .mobile-toggle {
             display: none;
             background: none;
             border: none;
-            color: var(--white);
+            color: var(--text-primary);
             font-size: 1.5rem;
             cursor: pointer;
         }
@@ -300,7 +358,7 @@
         }
 
         .hero-content {
-            max-width: 1200px;
+            max-width: 900px;
             text-align: center;
             z-index: 1;
         }
@@ -308,30 +366,34 @@
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 107, 44, 0.15);
-            border: 1px solid rgba(255, 107, 44, 0.3);
+            gap: 10px;
+            padding: 0.6rem 1.25rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.15);
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--primary-orange);
+            font-weight: 500;
             margin-bottom: 2rem;
             animation: fadeInUp 0.8s ease;
+            box-shadow: 0 2px 15px rgba(255, 107, 53, 0.08);
         }
 
         .hero-badge i {
-            font-size: 0.75rem;
+            font-size: 0.85rem;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-size: clamp(2.5rem, 5.5vw, 4.5rem);
             font-weight: 800;
-            line-height: 1.1;
+            line-height: 1.15;
             margin-bottom: 1.5rem;
+            color: var(--text-primary);
             animation: fadeInUp 0.8s ease 0.1s both;
         }
 
-        .hero h1 span {
+        .hero h1 .highlight {
             background: linear-gradient(135deg, var(--primary-orange), var(--orange-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -339,18 +401,27 @@
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+            color: var(--text-secondary);
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
             animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s both;
         }
 
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 3rem;
+            gap: 4rem;
+            margin-top: 4rem;
             animation: fadeInUp 0.8s ease 0.4s both;
         }
 
@@ -359,57 +430,17 @@
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 2.75rem;
+            font-weight: 800;
             color: var(--primary-orange);
+            line-height: 1;
         }
 
         .stat-label {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-top: 0.25rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            animation: fadeInUp 0.8s ease 0.3s both;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 14px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-orange), var(--orange-dark));
-            color: var(--white);
-            border: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 107, 44, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            font-weight: 500;
         }
 
         @keyframes fadeInUp {
@@ -430,7 +461,7 @@
         }
 
         .section-container {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
@@ -440,30 +471,34 @@
         }
 
         .section-tag {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 107, 44, 0.1);
-            border: 1px solid rgba(255, 107, 44, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.5rem 1.25rem;
+            background: var(--orange-soft);
+            border: 1px solid rgba(255, 107, 53, 0.12);
             border-radius: 50px;
             color: var(--primary-orange);
             font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.25rem;
         }
 
         .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(1.75rem, 3.5vw, 2.75rem);
             font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 1rem;
         }
 
         .section-subtitle {
             font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.6);
-            max-width: 600px;
+            color: var(--text-secondary);
+            max-width: 650px;
             margin: 0 auto;
+            line-height: 1.7;
         }
 
         /* Program Overview */
@@ -474,15 +509,16 @@
         }
 
         .overview-card {
-            padding: 2rem;
+            padding: 2.5rem;
             text-align: center;
         }
 
         .overview-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, rgba(255, 107, 44, 0.2), rgba(255, 107, 44, 0.1));
-            border-radius: 20px;
+            background: linear-gradient(135deg, var(--orange-soft), rgba(255, 107, 53, 0.08));
+            border: 1px solid rgba(255, 107, 53, 0.1);
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -492,40 +528,44 @@
         }
 
         .overview-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .overview-card p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.95rem;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
         }
 
         .overview-card .highlight {
             color: var(--primary-orange);
             font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .overview-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
         }
 
         /* Registration Banner */
         .registration-banner {
-            padding: 2rem 3rem;
+            padding: 2.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 3rem;
-            background: linear-gradient(135deg, rgba(255, 107, 44, 0.15), rgba(255, 107, 44, 0.05));
-            border: 1px solid rgba(255, 107, 44, 0.2);
+            background: linear-gradient(135deg, var(--orange-soft), rgba(255, 107, 53, 0.05));
+            border: 1px solid rgba(255, 107, 53, 0.15);
         }
 
         .registration-content h3 {
             font-size: 1.5rem;
             font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
 
         .registration-content p {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
         }
 
         .registration-price {
@@ -533,74 +573,85 @@
         }
 
         .registration-price .amount {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 800;
             color: var(--primary-orange);
+            line-height: 1;
         }
 
         .registration-price .note {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--text-muted);
+            margin-top: 0.25rem;
         }
 
         /* Pricing Cards */
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 2rem;
         }
 
         .pricing-card {
             padding: 2.5rem;
-            position: relative;
             display: flex;
             flex-direction: column;
         }
 
         .pricing-card.featured {
-            border-color: rgba(255, 107, 44, 0.4);
-            background: linear-gradient(135deg, rgba(255, 107, 44, 0.12) 0%, rgba(255, 107, 44, 0.04) 100%);
+            border-color: rgba(255, 107, 53, 0.25);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 244, 240, 0.9));
         }
 
-        .pricing-card.featured::before {
-            background: linear-gradient(90deg, transparent, rgba(255, 107, 44, 0.5), transparent);
+        .pricing-card.featured::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.03), transparent);
+            pointer-events: none;
         }
 
         .popular-badge {
             position: absolute;
-            top: -12px;
+            top: -14px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary-orange), var(--orange-dark));
+            background: linear-gradient(135deg, var(--primary-orange), var(--orange-light));
             color: var(--white);
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
             gap: 6px;
             white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
         }
 
         .pricing-header {
             text-align: center;
             margin-bottom: 2rem;
             padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--medium-gray);
         }
 
         .pricing-name {
             font-size: 1.25rem;
-            font-weight: 600;
+            font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
 
         .pricing-description {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--text-muted);
             margin-bottom: 1.5rem;
         }
 
@@ -612,26 +663,29 @@
         }
 
         .pricing-amount {
-            font-size: 3rem;
+            font-size: 3.25rem;
             font-weight: 800;
-            color: var(--white);
+            color: var(--text-primary);
+            line-height: 1;
         }
 
         .pricing-period {
             font-size: 1rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
         .pricing-hours {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+            padding: 0.6rem 1.25rem;
+            background: var(--light-gray);
+            border-radius: var(--radius-sm);
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 1rem;
+            color: var(--text-secondary);
+            margin-top: 1.25rem;
+            font-weight: 500;
         }
 
         .pricing-hours i {
@@ -644,11 +698,12 @@
         }
 
         .pricing-features h4 {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            font-weight: 600;
         }
 
         .pricing-features ul {
@@ -659,30 +714,38 @@
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            padding: 0.75rem 0;
-            color: rgba(255, 255, 255, 0.8);
+            padding: 0.7rem 0;
+            color: var(--text-secondary);
             font-size: 0.95rem;
         }
 
         .pricing-features li i {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--orange-soft);
+            border-radius: 50%;
             color: var(--primary-orange);
-            font-size: 0.85rem;
-            margin-top: 4px;
+            font-size: 0.65rem;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
         .pricing-features li.excluded {
-            color: rgba(255, 255, 255, 0.4);
-            text-decoration: line-through;
+            color: var(--text-muted);
         }
 
         .pricing-features li.excluded i {
-            color: rgba(255, 255, 255, 0.3);
+            background: var(--light-gray);
+            color: var(--text-muted);
         }
 
         .pricing-cta {
             width: 100%;
             padding: 1rem;
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
@@ -693,49 +756,62 @@
         }
 
         .pricing-cta.primary {
-            background: linear-gradient(135deg, var(--primary-orange), var(--orange-dark));
-            color: var(--white);
-            border: none;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.12), rgba(255, 143, 92, 0.08));
+            backdrop-filter: blur(10px);
+            color: var(--primary-orange);
+            border: 1px solid rgba(255, 107, 53, 0.25);
+            box-shadow: 
+                0 2px 12px rgba(255, 107, 53, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
         .pricing-cta.primary:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 143, 92, 0.12));
+            border-color: rgba(255, 107, 53, 0.4);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 107, 44, 0.4);
+            box-shadow: 
+                0 8px 24px rgba(255, 107, 53, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
 
         .pricing-cta.secondary {
-            background: transparent;
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            border: 1px solid var(--medium-gray);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
         }
 
         .pricing-cta.secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--primary-orange);
+            background: var(--orange-soft);
+            border-color: rgba(255, 107, 53, 0.2);
+            color: var(--primary-orange);
         }
 
-        /* Summer Program Section */
+        /* Summer Section */
         .summer-section {
-            background: linear-gradient(180deg, var(--black) 0%, rgba(255, 107, 44, 0.05) 50%, var(--black) 100%);
+            background: linear-gradient(180deg, var(--off-white) 0%, var(--orange-soft) 50%, var(--off-white) 100%);
         }
 
         .summer-note {
             text-align: center;
-            padding: 1.5rem 2rem;
-            background: rgba(255, 107, 44, 0.1);
-            border: 1px solid rgba(255, 107, 44, 0.2);
-            border-radius: 12px;
+            padding: 1.5rem 2.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.15);
+            border-radius: var(--radius-md);
             margin-bottom: 3rem;
+            box-shadow: 0 2px 15px rgba(255, 107, 53, 0.05);
         }
 
         .summer-note p {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
         }
 
         .summer-note .fee {
             color: var(--primary-orange);
-            font-weight: 600;
+            font-weight: 700;
         }
 
         /* Tutoring Section */
@@ -743,124 +819,146 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            align-items: center;
+            align-items: start;
         }
 
         .tutoring-info h3 {
             font-size: 1.75rem;
             font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 1rem;
         }
 
-        .tutoring-info p {
-            color: rgba(255, 255, 255, 0.6);
+        .tutoring-info > p {
+            color: var(--text-secondary);
             margin-bottom: 2rem;
             line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .subjects-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
         }
 
         .subjects-list {
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .subject-tag {
             padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--medium-gray);
             border-radius: 50px;
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-secondary);
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .subject-tag:hover {
-            border-color: var(--primary-orange);
+            border-color: rgba(255, 107, 53, 0.3);
             color: var(--primary-orange);
+            background: var(--orange-soft);
         }
 
-        .tutoring-packages {
+        .tutoring-features {
             display: grid;
-            gap: 1.5rem;
-        }
-
-        .package-card {
-            padding: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .package-info h4 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .package-info p {
-            color: var(--primary-orange);
-            font-size: 0.9rem;
-        }
-
-        .package-cta {
-            padding: 0.75rem 1.5rem;
-            background: rgba(255, 107, 44, 0.1);
-            border: 1px solid rgba(255, 107, 44, 0.3);
-            border-radius: 10px;
-            color: var(--primary-orange);
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .package-cta:hover {
-            background: var(--primary-orange);
-            color: var(--white);
-        }
-
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
         }
 
         .feature-item {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
-            padding: 1.5rem;
+            padding: 1.25rem;
         }
 
         .feature-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 107, 44, 0.1);
-            border-radius: 12px;
+            width: 44px;
+            height: 44px;
+            background: var(--orange-soft);
+            border: 1px solid rgba(255, 107, 53, 0.1);
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary-orange);
             flex-shrink: 0;
+            font-size: 1.1rem;
         }
 
         .feature-text h4 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
+            color: var(--text-primary);
             margin-bottom: 0.25rem;
         }
 
         .feature-text p {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--text-muted);
+        }
+
+        .tutoring-packages {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .package-card {
+            padding: 1.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .package-info h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .package-info p {
+            color: var(--primary-orange);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .package-cta {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 143, 92, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: var(--radius-sm);
+            color: var(--primary-orange);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .package-cta:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 143, 92, 0.1));
+            border-color: rgba(255, 107, 53, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.15);
         }
 
         /* Test Prep Section */
         .test-prep-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 2rem;
         }
 
@@ -870,52 +968,69 @@
 
         .test-header {
             margin-bottom: 2rem;
+            text-align: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--medium-gray);
         }
 
         .test-name {
             font-size: 1.5rem;
             font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
 
         .test-hours {
             color: var(--primary-orange);
             font-weight: 600;
+            font-size: 1rem;
         }
 
         .test-price {
             display: flex;
             align-items: baseline;
+            justify-content: center;
             gap: 4px;
-            margin-top: 1rem;
+            margin-top: 1.25rem;
         }
 
         .test-amount {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 800;
+            color: var(--text-primary);
         }
 
         .test-unit {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--text-muted);
+            font-size: 1rem;
         }
 
         /* Additional Services */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 2rem;
         }
 
         .services-category {
-            padding: 2rem;
+            padding: 2.5rem;
         }
 
         .services-category h3 {
             font-size: 1.25rem;
-            font-weight: 600;
+            font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--medium-gray);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .services-category h3 i {
+            color: var(--primary-orange);
+            font-size: 1.1rem;
         }
 
         .service-item {
@@ -923,7 +1038,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--light-gray);
         }
 
         .service-item:last-child {
@@ -931,22 +1046,61 @@
         }
 
         .service-name {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-secondary);
+            font-weight: 500;
         }
 
         .service-price {
             color: var(--primary-orange);
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+        }
+
+        .cta-card {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 244, 240, 0.9));
+            border: 1px solid rgba(255, 107, 53, 0.15);
+        }
+
+        .cta-card h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .cta-card p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* Footer */
         .footer {
             padding: 4rem 2rem 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--white);
+            border-top: 1px solid var(--medium-gray);
         }
 
         .footer-content {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -954,38 +1108,40 @@
         }
 
         .footer-brand p {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--text-muted);
             margin: 1rem 0 1.5rem;
             max-width: 300px;
+            line-height: 1.7;
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            width: 42px;
+            height: 42px;
+            background: var(--light-gray);
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
             transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            background: var(--primary-orange);
-            border-color: var(--primary-orange);
-            color: var(--white);
+            background: var(--orange-soft);
+            border-color: rgba(255, 107, 53, 0.2);
+            color: var(--primary-orange);
         }
 
         .footer-links h4 {
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 1.5rem;
         }
 
@@ -998,9 +1154,10 @@
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--text-muted);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-weight: 500;
         }
 
         .footer-links a:hover {
@@ -1008,12 +1165,12 @@
         }
 
         .footer-bottom {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 3rem auto 0;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--medium-gray);
             text-align: center;
-            color: rgba(255, 255, 255, 0.4);
+            color: var(--text-muted);
             font-size: 0.9rem;
         }
 
@@ -1034,15 +1191,16 @@
             position: fixed;
             top: 0;
             right: -100%;
-            width: 80%;
+            width: 85%;
             max-width: 400px;
             height: 100vh;
-            background: rgba(10, 10, 10, 0.98);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 999;
             padding: 6rem 2rem 2rem;
             transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
         }
 
         .mobile-menu.active {
@@ -1055,7 +1213,7 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3);
             z-index: 998;
             opacity: 0;
             visibility: hidden;
@@ -1072,17 +1230,17 @@
         }
 
         .mobile-nav-links li {
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .mobile-nav-links a {
-            color: var(--white);
+            color: var(--text-primary);
             text-decoration: none;
-            font-size: 1.25rem;
-            font-weight: 500;
+            font-size: 1.15rem;
+            font-weight: 600;
             display: block;
             padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--medium-gray);
             transition: color 0.3s ease;
         }
 
@@ -1106,6 +1264,11 @@
 
             .tutoring-content {
                 grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .tutoring-features {
+                grid-template-columns: 1fr 1fr;
             }
 
             .footer-content {
@@ -1114,19 +1277,37 @@
         }
 
         @media (max-width: 768px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+
             .hero-stats {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 2rem;
             }
 
             .hero-buttons {
                 flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .hero-buttons .btn-glass,
+            .hero-buttons .btn-solid {
+                width: 100%;
+                justify-content: center;
             }
 
             .registration-banner {
                 flex-direction: column;
                 text-align: center;
                 gap: 1.5rem;
+                padding: 2rem;
             }
 
             .registration-price {
@@ -1137,27 +1318,43 @@
                 grid-template-columns: 1fr;
             }
 
+            .tutoring-features {
+                grid-template-columns: 1fr;
+            }
+
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 2.5rem;
+            }
+
+            .cta-card {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
             }
         }
 
         @media (max-width: 480px) {
             .section-title {
-                font-size: 1.75rem;
+                font-size: 1.5rem;
             }
 
             .pricing-card {
-                padding: 1.5rem;
+                padding: 2rem 1.5rem;
             }
 
             .pricing-amount {
+                font-size: 2.75rem;
+            }
+
+            .test-amount {
                 font-size: 2.5rem;
             }
         }
 
-        /* Animations on scroll */
+        /* Reveal Animation */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -1175,7 +1372,7 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: var(--black);
+            background: var(--light-gray);
         }
 
         ::-webkit-scrollbar-thumb {
@@ -1189,11 +1386,13 @@
     </style>
 </head>
 <body>
-    <!-- Background Animation -->
-    <div class="bg-animation"></div>
-    <div class="floating-orb orb-1"></div>
-    <div class="floating-orb orb-2"></div>
-    <div class="floating-orb orb-3"></div>
+    <!-- Background Decoration -->
+    <div class="bg-decoration">
+        <div class="bg-shape bg-shape-1"></div>
+        <div class="bg-shape bg-shape-2"></div>
+        <div class="bg-shape bg-shape-3"></div>
+        <div class="bg-shape bg-shape-4"></div>
+    </div>
 
     <!-- Scroll Progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -1230,7 +1429,7 @@
             <li><a href="#tutoring">Tutoring</a></li>
             <li><a href="#test-prep">Test Prep</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#contact" class="btn btn-primary" style="margin-top: 1rem; justify-content: center;">Get Started</a></li>
+            <li><a href="#contact" class="btn-glass-primary" style="margin-top: 1rem; display: flex; justify-content: center; border-radius: 12px;">Get Started</a></li>
         </ul>
     </div>
 
@@ -1241,16 +1440,16 @@
                 <i class="fas fa-graduation-cap"></i>
                 Year-Round Learning • PK–8th Grade
             </div>
-            <h1>Where Learning <span>Never Stops</span></h1>
+            <h1>Where Every Child <span class="highlight">Thrives</span></h1>
             <p class="hero-subtitle">
-                Comprehensive before & aftercare programs, summer camps, and personalized tutoring designed to help your child excel.
+                Comprehensive before & aftercare programs, summer camps, and personalized tutoring designed to help your child excel academically and grow confidently.
             </p>
             <div class="hero-buttons">
-                <a href="#programs" class="btn btn-primary">
+                <a href="#programs" class="btn-solid">
                     <i class="fas fa-rocket"></i>
                     Explore Programs
                 </a>
-                <a href="#contact" class="btn btn-secondary">
+                <a href="#contact" class="btn-glass">
                     <i class="fas fa-phone"></i>
                     Contact Us
                 </a>
@@ -1276,10 +1475,10 @@
     <section id="overview">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-tag">Program Overview</span>
+                <span class="section-tag"><i class="fas fa-info-circle"></i> Program Overview</span>
                 <h2 class="section-title">Year-Round Support for Every Student</h2>
                 <p class="section-subtitle">
-                    Math ETC offers comprehensive programs designed to support your child's academic journey throughout the year.
+                    Math ETC offers comprehensive programs designed to support your child's academic journey and provide safe, enriching care throughout the year.
                 </p>
             </div>
 
@@ -1289,31 +1488,31 @@
                         <i class="fas fa-sun"></i>
                     </div>
                     <h3>Before & Aftercare</h3>
-                    <p><span class="highlight">August – June</span></p>
-                    <p>Safe, engaging care with academic support before and after school.</p>
+                    <p class="highlight">August – June</p>
+                    <p>Safe, engaging care with academic support before and after school hours.</p>
                 </div>
                 <div class="glass-card overview-card">
                     <div class="overview-icon">
                         <i class="fas fa-umbrella-beach"></i>
                     </div>
                     <h3>Summer Camp</h3>
-                    <p><span class="highlight">June – August</span></p>
-                    <p>Learn, explore, and play all summer without burnout.</p>
+                    <p class="highlight">June – August</p>
+                    <p>Learn, explore, and play all summer—fun-filled activities without burnout.</p>
                 </div>
                 <div class="glass-card overview-card">
                     <div class="overview-icon">
                         <i class="fas fa-user-graduate"></i>
                     </div>
                     <h3>1:1 Tutoring</h3>
-                    <p><span class="highlight">Year-Round</span></p>
-                    <p>Personalized instruction tailored to your child's unique needs.</p>
+                    <p class="highlight">Year-Round</p>
+                    <p>Personalized instruction tailored to your child's unique learning needs.</p>
                 </div>
             </div>
 
             <div class="glass registration-banner reveal">
                 <div class="registration-content">
                     <h3>Annual Registration Fee</h3>
-                    <p>One-time fee covers all program enrollments for the year</p>
+                    <p>One-time fee covers all program enrollments for the entire year</p>
                 </div>
                 <div class="registration-price">
                     <div class="amount">$150</div>
@@ -1327,10 +1526,10 @@
     <section id="programs">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-tag">Before & Aftercare Programs</span>
+                <span class="section-tag"><i class="fas fa-clock"></i> Before & Aftercare</span>
                 <h2 class="section-title">Complete Daily Care Solutions</h2>
                 <p class="section-subtitle">
-                    Full-day coverage with safe transportation, engaging activities, and academic support.
+                    Full-day coverage with safe transportation, engaging activities, and comprehensive academic support.
                 </p>
             </div>
 
@@ -1398,7 +1597,7 @@
 
             <!-- Aftercare Only -->
             <div class="section-header" style="margin-top: 5rem;">
-                <span class="section-tag">Aftercare Programs</span>
+                <span class="section-tag"><i class="fas fa-sun"></i> Aftercare Programs</span>
                 <h2 class="section-title">Afternoon Care Options</h2>
             </div>
 
@@ -1460,7 +1659,7 @@
 
             <!-- Beforecare Only -->
             <div class="section-header" style="margin-top: 5rem;">
-                <span class="section-tag">Beforecare Programs</span>
+                <span class="section-tag"><i class="fas fa-coffee"></i> Beforecare Programs</span>
                 <h2 class="section-title">Morning Care Options</h2>
             </div>
 
@@ -1526,7 +1725,7 @@
     <section id="summer" class="summer-section">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-tag">Summer Program</span>
+                <span class="section-tag"><i class="fas fa-umbrella-beach"></i> Summer Camp</span>
                 <h2 class="section-title">Summer Adventures Await</h2>
                 <p class="section-subtitle">
                     Learn, explore, and play all summer—without burnout. Fun-filled activities combined with academic enrichment.
@@ -1535,7 +1734,7 @@
 
             <div class="summer-note glass reveal">
                 <p>All summer programs include a <span class="fee">$40 weekly Activity Fee</span></p>
-                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.5);">Covers field trips, splash park visits, and special activities</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Covers field trips, splash park visits, and special activities</p>
             </div>
 
             <div class="pricing-grid reveal">
@@ -1662,40 +1861,39 @@
     <section id="tutoring">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-tag">One-on-One Tutoring</span>
+                <span class="section-tag"><i class="fas fa-chalkboard-teacher"></i> 1:1 Tutoring</span>
                 <h2 class="section-title">Personalized Learning, Real Results</h2>
                 <p class="section-subtitle">
-                    PK – 12th Grade tutoring tailored to your child's unique learning style and goals.
+                    PK – 12th Grade tutoring tailored to your child's unique learning style, pace, and goals.
                 </p>
             </div>
 
             <div class="tutoring-content reveal">
                 <div class="tutoring-info">
-                    <h3>Why 1:1 Tutoring?</h3>
+                    <h3>Why Choose 1:1 Tutoring?</h3>
                     <p>
-                        Our personalized approach allows tutors to focus on your child's strengths, gaps, and learning pace. 
-                        Whether catching up, keeping up, or getting ahead—we meet students where they are.
+                        Our personalized approach allows tutors to focus on your child's strengths, address knowledge gaps, and adapt to their learning pace. Whether catching up, keeping up, or getting ahead—we meet students exactly where they are.
                     </p>
                     
-                    <h4 style="margin-bottom: 1rem; color: rgba(255,255,255,0.8);">Subjects Include:</h4>
+                    <p class="subjects-label">Subjects Include:</p>
                     <div class="subjects-list">
                         <span class="subject-tag">Math</span>
                         <span class="subject-tag">Algebra</span>
                         <span class="subject-tag">Geometry</span>
                         <span class="subject-tag">Calculus</span>
-                        <span class="subject-tag">Reading Comprehension</span>
+                        <span class="subject-tag">Reading</span>
                         <span class="subject-tag">Physics</span>
                         <span class="subject-tag">& More</span>
                     </div>
 
-                    <div class="features-grid" style="margin-top: 2rem;">
+                    <div class="tutoring-features">
                         <div class="feature-item glass-card">
                             <div class="feature-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="feature-text">
                                 <h4>Flexible Location</h4>
-                                <p>In-person (Bowie) or virtual sessions</p>
+                                <p>In-person (Bowie) or virtual</p>
                             </div>
                         </div>
                         <div class="feature-item glass-card">
@@ -1703,8 +1901,8 @@
                                 <i class="fas fa-clock"></i>
                             </div>
                             <div class="feature-text">
-                                <h4>Flexible Duration</h4>
-                                <p>60 / 90 / 120 minute sessions</p>
+                                <h4>Session Lengths</h4>
+                                <p>60 / 90 / 120 minutes</p>
                             </div>
                         </div>
                         <div class="feature-item glass-card">
@@ -1712,17 +1910,17 @@
                                 <i class="fas fa-calendar-alt"></i>
                             </div>
                             <div class="feature-text">
-                                <h4>Custom Scheduling</h4>
+                                <h4>Custom Schedule</h4>
                                 <p>1–3 sessions per week</p>
                             </div>
                         </div>
                         <div class="feature-item glass-card">
                             <div class="feature-icon">
-                                <i class="fas fa-book"></i>
+                                <i class="fas fa-book-open"></i>
                             </div>
                             <div class="feature-text">
                                 <h4>Multi-Subject</h4>
-                                <p>Use across K–12 subjects</p>
+                                <p>Use across all K–12 subjects</p>
                             </div>
                         </div>
                     </div>
@@ -1736,7 +1934,7 @@
                         </div>
                         <a href="#contact" class="package-cta">Enroll</a>
                     </div>
-                    <div class="glass-card package-card" style="border-color: rgba(255, 107, 44, 0.3);">
+                    <div class="glass-card package-card" style="border-color: rgba(255, 107, 53, 0.25);">
                         <div class="package-info">
                             <h4>Plus Package</h4>
                             <p>24 Hours of Tutoring</p>
@@ -1759,7 +1957,7 @@
     <section id="test-prep">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-tag">Test Preparation</span>
+                <span class="section-tag"><i class="fas fa-pencil-alt"></i> Test Preparation</span>
                 <h2 class="section-title">Ace Your Exams</h2>
                 <p class="section-subtitle">
                     SSAT • ISEE • SAT • ACT • State Exams & More<br>
@@ -1780,7 +1978,7 @@
                     <div class="pricing-features">
                         <h4>What's Included</h4>
                         <ul>
-                            <li><i class="fas fa-check"></i> 1:1 instruction</li>
+                            <li><i class="fas fa-check"></i> 1:1 personalized instruction</li>
                             <li><i class="fas fa-check"></i> Math & Reading coverage</li>
                             <li><i class="fas fa-check"></i> Full test breakdown</li>
                             <li><i class="fas fa-check"></i> Practice sessions</li>
@@ -1805,7 +2003,7 @@
                     <div class="pricing-features">
                         <h4>What's Included</h4>
                         <ul>
-                            <li><i class="fas fa-check"></i> 1:1 instruction</li>
+                            <li><i class="fas fa-check"></i> 1:1 personalized instruction</li>
                             <li><i class="fas fa-check"></i> Math & Reading mastery</li>
                             <li><i class="fas fa-check"></i> Advanced test strategies</li>
                             <li><i class="fas fa-check"></i> Intensive practice sessions</li>
@@ -1815,41 +2013,41 @@
                 </div>
             </div>
 
-            <div class="features-grid reveal" style="margin-top: 3rem;">
-                <div class="feature-item glass-card">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 3rem;" class="reveal">
+                <div class="glass-card feature-item">
                     <div class="feature-icon">
                         <i class="fas fa-puzzle-piece"></i>
                     </div>
                     <div class="feature-text">
                         <h4>Modular Lessons</h4>
-                        <p>Focus on areas that need the most work</p>
+                        <p>Focus on weak areas</p>
                     </div>
                 </div>
-                <div class="feature-item glass-card">
+                <div class="glass-card feature-item">
                     <div class="feature-icon">
                         <i class="fas fa-user-cog"></i>
                     </div>
                     <div class="feature-text">
-                        <h4>Customized Instruction</h4>
-                        <p>Tailored to individual learning styles</p>
+                        <h4>Custom Instruction</h4>
+                        <p>Tailored to learning style</p>
                     </div>
                 </div>
-                <div class="feature-item glass-card">
+                <div class="glass-card feature-item">
                     <div class="feature-icon">
                         <i class="fas fa-laptop"></i>
                     </div>
                     <div class="feature-text">
                         <h4>Digital SAT Ready</h4>
-                        <p>Practice with current test formats</p>
+                        <p>Current test formats</p>
                     </div>
                 </div>
-                <div class="feature-item glass-card">
+                <div class="glass-card feature-item">
                     <div class="feature-icon">
                         <i class="fas fa-lightbulb"></i>
                     </div>
                     <div class="feature-text">
                         <h4>Proven Strategies</h4>
-                        <p>Expert test-taking techniques</p>
+                        <p>Expert techniques</p>
                     </div>
                 </div>
             </div>
@@ -1860,16 +2058,16 @@
     <section id="services">
         <div class="section-container">
             <div class="section-header">
-                <span class="section-tag">Additional Services</span>
-                <h2 class="section-title">Flexible Options</h2>
+                <span class="section-tag"><i class="fas fa-plus-circle"></i> Additional Services</span>
+                <h2 class="section-title">Flexible Options for Every Need</h2>
                 <p class="section-subtitle">
-                    Drop-in care, assessments, and materials to support your child's learning journey.
+                    Drop-in care, diagnostic assessments, and materials to support your child's complete learning journey.
                 </p>
             </div>
 
             <div class="services-grid reveal">
                 <div class="glass-card services-category">
-                    <h3><i class="fas fa-calendar-day" style="color: var(--primary-orange); margin-right: 10px;"></i>Weekly Programs</h3>
+                    <h3><i class="fas fa-calendar-day"></i> Weekly Programs</h3>
                     <div class="service-item">
                         <span class="service-name">Drop-In Morning Care</span>
                         <span class="service-price">$35</span>
@@ -1889,7 +2087,7 @@
                 </div>
 
                 <div class="glass-card services-category">
-                    <h3><i class="fas fa-clipboard-check" style="color: var(--primary-orange); margin-right: 10px;"></i>Hourly Programs</h3>
+                    <h3><i class="fas fa-clipboard-check"></i> Assessments & Materials</h3>
                     <div class="service-item">
                         <span class="service-name">Math Diagnostic Assessment</span>
                         <span class="service-price">$175</span>
@@ -1912,21 +2110,21 @@
     </section>
 
     <!-- CTA Section -->
-    <section id="contact">
+    <section id="contact" class="cta-section">
         <div class="section-container">
-            <div class="glass reveal" style="padding: 4rem; text-align: center; background: linear-gradient(135deg, rgba(255, 107, 44, 0.15), rgba(255, 107, 44, 0.05)); border-color: rgba(255, 107, 44, 0.2);">
-                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Ready to Get Started?</h2>
-                <p style="color: rgba(255,255,255,0.6); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem;">
-                    Join hundreds of families who trust Math ETC for their children's academic success and care.
+            <div class="glass cta-card reveal">
+                <h2>Ready to Get Started?</h2>
+                <p>
+                    Join hundreds of families who trust Math ETC for their children's academic success, safety, and growth. Let's talk about how we can help your child thrive.
                 </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="tel:+1234567890" class="btn btn-primary">
+                <div class="cta-buttons">
+                    <a href="tel:+1234567890" class="btn-solid">
                         <i class="fas fa-phone"></i>
                         Call Us Today
                     </a>
-                    <a href="mailto:info@mathetc.com" class="btn btn-secondary">
+                    <a href="mailto:info@mathetc.com" class="btn-glass">
                         <i class="fas fa-envelope"></i>
-                        Email Us
+                        Send an Email
                     </a>
                 </div>
             </div>
@@ -1943,10 +2141,10 @@
                 </a>
                 <p>Empowering students with comprehensive care and personalized learning experiences since 2010.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="footer-links">
@@ -2035,7 +2233,7 @@
             reveals.forEach(element => {
                 const windowHeight = window.innerHeight;
                 const elementTop = element.getBoundingClientRect().top;
-                const revealPoint = 150;
+                const revealPoint = 120;
 
                 if (elementTop < windowHeight - revealPoint) {
                     element.classList.add('active');
@@ -2052,23 +2250,27 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Parallax effect for floating orbs
+        // Subtle parallax for background shapes
         document.addEventListener('mousemove', (e) => {
-            const orbs = document.querySelectorAll('.floating-orb');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
+            const shapes = document.querySelectorAll('.bg-shape');
+            const x = (e.clientX / window.innerWidth - 0.5) * 2;
+            const y = (e.clientY / window.innerHeight - 0.5) * 2;
 
-            orbs.forEach((orb, index) => {
-                const speed = (index + 1) * 20;
-                orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 8;
+                shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
             });
         });
 
@@ -2082,18 +2284,18 @@
         });
 
         // Counter animation for stats
-        function animateCounter(element, target) {
+        function animateCounter(element, target, suffix = '') {
             let current = 0;
-            const increment = target / 50;
+            const increment = target / 60;
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
-                    element.textContent = target + (element.dataset.suffix || '');
+                    element.textContent = target + suffix;
                     clearInterval(timer);
                 } else {
-                    element.textContent = Math.floor(current) + (element.dataset.suffix || '');
+                    element.textContent = Math.floor(current) + suffix;
                 }
-            }, 30);
+            }, 25);
         }
 
         // Observe stats section
@@ -2105,8 +2307,7 @@
                         const text = stat.textContent;
                         const number = parseInt(text);
                         const suffix = text.replace(/[0-9]/g, '');
-                        stat.dataset.suffix = suffix;
-                        animateCounter(stat, number);
+                        animateCounter(stat, number, suffix);
                     });
                     statsObserver.unobserve(entry.target);
                 }
